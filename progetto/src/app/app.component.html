@@ -15,11 +15,5 @@ Ora Prenotazione: <input type="text" #ora placeholder="Ora Prenotazione">
 
 @for(pre of vettPrenotazioni; track pre){
   <br><br>
-  {{pre.nome}}<br>
-  {{pre.cognome}}<br>
-  {{pre.indirizzo}}<br>
-  {{pre.telefono}}<br>
-  {{pre.email}}<br>
-  {{pre.data}}<br>
-  {{pre.ora}}<br>
+  <app-lista-prenotazioni [prenotazione]= "pre"></app-lista-prenotazioni>
 }

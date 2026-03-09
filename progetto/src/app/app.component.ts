@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Prenotazioni } from '../models/prenotazioni.models';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazioni.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ListaPrenotazioniComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
