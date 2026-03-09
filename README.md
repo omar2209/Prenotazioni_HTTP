@@ -38,6 +38,3 @@ Automatically updates the booking list after adding a new entry
 - JSON Server
 
 - HTML & CSS
-JSON Server (mock backend)
-
-HTML & CSS
