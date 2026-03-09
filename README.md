@@ -5,7 +5,7 @@
 
 This project is an Angular application for managing bookings. Users can add new bookings via a form and view a list of saved bookings. Data is stored and retrieved through a simulated JSON server (JSON Server).
 
-# Features
+## Features
 
 Add a new booking with:
 
