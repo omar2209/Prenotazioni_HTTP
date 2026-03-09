@@ -27,7 +27,7 @@ Automatically updates the booking list after adding a new entry
 
 ---
 
-#Technologies Used
+## Technologies Used
 
 - Angular
 
