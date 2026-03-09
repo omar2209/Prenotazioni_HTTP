@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Prenotazioni } from '../models/prenotazioni.models';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,29 @@ import { Prenotazioni } from '../models/prenotazioni.models';
   styleUrl: './app.component.css'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'progetto';
   vettPrenotazioni: Prenotazioni[] = []
+
+  loading!: boolean
+  o_vettPrenotazioni!: Observable<Prenotazioni[]>
+  http!: HttpClient
+
+  constructor(http : HttpClient) {this.http = http}
+  
+  makeGet(){
+    this.loading = true
+    this.o_vettPrenotazioni = this.http.get<Prenotazioni[]>("https://my-json-server.typicode.com/malizia-g/verificaPrenotazioni/prenotazioni")
+    this.o_vettPrenotazioni.subscribe(this.getData)
+  }
+
+  getData = (dati: Prenotazioni[]) =>
+  {
+    this.vettPrenotazioni = dati
+    this.loading = false
+  }
+
+  ngOnInit() {
+    this.makeGet()
+  }
 }
