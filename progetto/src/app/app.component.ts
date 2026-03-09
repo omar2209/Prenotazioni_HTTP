@@ -21,12 +21,34 @@ export class AppComponent implements OnInit{
   o_vettPrenotazioni!: Observable<Prenotazioni[]>
   http!: HttpClient
 
+  o!: Observable<Object>
+  data!: Object
+  datiPost : Object = JSON.stringify({})
+
   constructor(http : HttpClient) {this.http = http}
 
   salva(nome : HTMLInputElement, cognome : HTMLInputElement, indirizzo : HTMLInputElement, telefono : HTMLInputElement, email : HTMLInputElement, data : HTMLInputElement, ora : HTMLInputElement)
   {
+    this.loading = true
+    this.datiPost = JSON.stringify({
+      nome: nome.value,
+      cognome: cognome.value,
+      indirizzo: indirizzo.value,
+      telefono: telefono.value,
+      email: email.value,
+      data: data.value,
+      ora: ora.value
+    })
+    this.o = this.http.post("https://my-json-server.typicode.com/malizia-g/verificaPrenotazioni/prenotazioni", this.datiPost)
+    this.o.subscribe(this.postData)
     this.vettPrenotazioni.push(new Prenotazioni(nome.value, cognome.value, indirizzo.value, telefono.value, email.value, data.value, ora.value))
     console.log(this.vettPrenotazioni)
+  }
+  postData = (d : object) =>
+  {
+    this.data = d
+    this.loading = false 
+    console.log(this.data)
   }
 
   makeGet(){
