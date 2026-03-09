@@ -13,6 +13,8 @@ Data Prenotazione: <input type="text" #data placeholder="Data Prenotazione">
 <br>
 Ora Prenotazione: <input type="text" #ora placeholder="Ora Prenotazione">
 
+<button (click)="salva(nome, cognome, indirizzo, telefono, email, data, ora)">Salva</button>
+
 @for(pre of vettPrenotazioni; track pre){
   <br><br>
   <app-lista-prenotazioni [prenotazione]= "pre"></app-lista-prenotazioni>
