@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ListaPrenotazioniComponent } from './lista-prenotazioni/lista-prenotazioni.component';
 import { HtmlParser } from '@angular/compiler';
+import { DettagliComponent } from './dettagli/dettagli.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListaPrenotazioniComponent],
+  imports: [RouterOutlet, ListaPrenotazioniComponent, DettagliComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,7 +17,7 @@ import { HtmlParser } from '@angular/compiler';
 export class AppComponent implements OnInit{
   title = 'progetto';
   vettPrenotazioni: Prenotazioni[] = []
-
+  prenotazioneSelezionata : Prenotazioni = new Prenotazioni("nulla", "nulla,", "","","","","")
   loading!: boolean
   o_vettPrenotazioni!: Observable<Prenotazioni[]>
   http!: HttpClient
@@ -66,4 +67,6 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.makeGet()
   }
+
+
 }

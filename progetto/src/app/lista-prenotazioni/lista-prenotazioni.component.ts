@@ -9,5 +9,12 @@ import { Prenotazioni } from '../../models/prenotazioni.models';
   styleUrl: './lista-prenotazioni.component.css'
 })
 export class ListaPrenotazioniComponent {
-  @Input() prenotazione!: Prenotazioni
+  @Input() prenotazione!: Prenotazioni;
+   @Input() prenotazioneSelezionata! : Prenotazioni;
+
+    dettagli(prenotazione : Prenotazioni)
+  {
+    console.log(prenotazione);
+    this.prenotazioneSelezionata.nome = prenotazione.nome;
+  }
 }
